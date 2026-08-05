@@ -1,6 +1,6 @@
 ---
 name: peppa-transcript-fixer
-description: Fix Peppa Pig transcript errors, split into complete sentences, add Chinese explanations and German learning notes, then update the website.
+description: Fix Peppa Pig transcript errors, split into complete sentences, analyze sentence structure and grammar, add Chinese explanations, then update the website.
 disable-model-invocation: true
 ---
 
@@ -29,25 +29,26 @@ Use this skill when the user pastes a Peppa Pig transcript and wants it correcte
    - Do not number the sentences when updating the website.
    Completion criterion: the full passage is represented as an ordered sentence list with nothing missing.
 
-4. Explain each sentence for study.
+4. Analyze each sentence for study.
    - For each sentence, provide:
      - the corrected German sentence
      - a natural Chinese translation
-     - 1-3 short learning notes focused on useful vocabulary, grammar, or idiom
-   - Keep notes practical. Prefer items like separable verbs, case usage, fixed phrases, word order, and omitted repeated material.
-   - Avoid filler analysis that only restates the translation.
-   Completion criterion: every sentence has German, Chinese, and concise study notes.
+     - **结构**：一句拆出主干（主语 / 谓语 / 宾语或补语），标出从句、省略、插入语
+     - **语法**：1-3 个具体语法点（时态、语序、格、可分动词、情态动词、不定式结构、固定搭配等）
+   - Name the pattern, then explain what it does in this sentence. Example: `werden + Infinitiv` = 将来时.
+   - Skip generic filler. Every note should teach something the learner can reuse.
+   Completion criterion: every sentence has German, Chinese, structure breakdown, and at least one grammar point.
 
 5. Update the website.
    - Add the new sentences to `index.html` in the same visual structure already used by the site:
      - one `<article class="line">` per sentence
      - German in `<p class="de">`
      - Chinese in `<p class="zh">`
-     - notes in `<ul class="tips">` when there are useful points
+     - structure and grammar in `<ul class="tips">`, leading with **结构** and **语法** labels
    - Preserve sentence order.
    - Do not add numbering.
    - Keep wording on the page aligned with the corrected transcript you just produced.
-   Completion criterion: the new learning content is present in `index.html` and matches the corrected sentence list.
+   Completion criterion: the new learning content is present in `index.html` and matches the corrected sentence list, including structure and grammar for every sentence.
 
 6. Verify the update.
    - Read the edited section back or inspect the diff.
@@ -70,7 +71,21 @@ When the user asks for explanation before updating the site, use this per-senten
 ```markdown
 **German sentence.**
 中文翻译。
-- **point** = explanation
+- **结构**：主语 + 谓语 + …
+- **语法**：pattern = explanation
 ```
 
 When the user asks to update the site, make the edit directly and summarize what was added or corrected.
+
+## Grammar Focus
+
+Prioritize patterns that recur in Peppa Pig dialogue:
+
+- word order (V2, verb-final in subordinate clauses, inverted questions)
+- cases (Nominativ, Akkusativ, Dativ) and preposition + case
+- separable verbs (`ein|kaufen`, `an|fangen`)
+- modal verbs and questions (`kann ich …?`, `darf ich …?`)
+- `es` as placeholder (`lieben es, … zu …`)
+- omitted repeated material (`Peppa eigentlich auch.`)
+- imperatives (`Leg …!`, `Hilf …!`)
+- fixed phrases (`gut gemacht`, `hier entlang`, `am liebsten`)
