@@ -19,26 +19,7 @@
   <header class="hero">
     <p class="brand">Peppa Pig Deutsch</p>
     <h1>跟小猪佩奇学德语</h1>
-    <a class="cta" href="#notes">开始看笔记</a>
-    <div class="hill" aria-hidden="true">
-      <svg class="peppa" viewBox="0 0 160 140" role="img" aria-label="小猪佩奇剪影">
-        <ellipse cx="78" cy="88" rx="42" ry="36" fill="#ff8fab" />
-        <ellipse cx="48" cy="72" rx="28" ry="18" fill="#ff8fab" />
-        <ellipse cx="28" cy="68" rx="14" ry="10" fill="#ff9ebb" />
-        <circle cx="22" cy="64" r="3.2" fill="#5c4033" />
-        <circle cx="34" cy="64" r="3.2" fill="#5c4033" />
-        <ellipse cx="62" cy="48" rx="8" ry="16" fill="#ff8fab" transform="rotate(-18 62 48)" />
-        <ellipse cx="78" cy="46" rx="8" ry="16" fill="#ff8fab" transform="rotate(12 78 46)" />
-        <circle cx="70" cy="78" r="5" fill="#fff" />
-        <circle cx="71.5" cy="78.5" r="2.4" fill="#3d2b1f" />
-        <ellipse cx="58" cy="92" rx="8" ry="5" fill="#f0618a" opacity=".55" />
-        <rect x="62" y="118" width="10" height="16" rx="5" fill="#ff8fab" />
-        <rect x="84" y="118" width="10" height="16" rx="5" fill="#ff8fab" />
-        <ellipse cx="67" cy="132" rx="9" ry="5" fill="#e879a8" />
-        <ellipse cx="89" cy="132" rx="9" ry="5" fill="#e879a8" />
-        <path d="M96 100c18 4 28 18 22 30-8 2-20-4-28-14" fill="#7ec8f5" opacity=".9" />
-      </svg>
-    </div>
+    <a class="cta" href="#notes">开始学习</a>
   </header>
 
   <main id="notes" class="notes">
@@ -3158,22 +3139,6 @@
 
   <script>
     const lines = document.querySelectorAll(".line");
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.18 }
-    );
-    lines.forEach((line, i) => {
-      line.style.setProperty("--delay", `${i * 40}ms`);
-      io.observe(line);
-    });
-
     const playIcon =
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5L8 5.5z"/></svg>';
     const stopIcon =
