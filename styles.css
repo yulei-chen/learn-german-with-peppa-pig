@@ -260,6 +260,7 @@ body {
   z-index: 8;
   margin: 0 0 1.75rem;
   padding: 0.55rem 0 0.75rem;
+  background: var(--sky-bottom);
 }
 
 .video {
