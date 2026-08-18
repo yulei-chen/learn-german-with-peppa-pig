@@ -1,6 +1,6 @@
 ---
 name: peppa-transcript-fixer
-description: Fix Peppa Pig transcript errors, split into complete sentences, analyze sentence structure and grammar, add Chinese explanations, then update the website.
+description: Fix Peppa Pig transcript errors, split into complete sentences, gloss every word, analyze sentence structure and grammar, add Chinese explanations, then update the website.
 disable-model-invocation: true
 ---
 
@@ -33,22 +33,26 @@ Use this skill when the user pastes a Peppa Pig transcript and wants it correcte
    - For each sentence, provide:
      - the corrected German sentence
      - a natural Chinese translation
+     - **词汇**：句子里每一个词的含义，按出现顺序，一个不漏
      - **结构**：一句拆出主干（主语 / 谓语 / 宾语或补语），标出从句、省略、插入语
      - **语法**：1-3 个具体语法点（时态、语序、格、可分动词、情态动词、不定式结构、固定搭配等）
-   - Name the pattern, then explain what it does in this sentence. Example: `werden + Infinitiv` = 将来时.
+   - Gloss the word as it appears in this sentence, including names, articles, pronouns, particles, and separable prefixes.
+   - Give the meaning in this sentence, not a dictionary dump. Add a short grammatical hint only when it helps (case, person, separable prefix).
+   - Name the grammar pattern, then explain what it does in this sentence. Example: `werden + Infinitiv` = 将来时.
    - Skip generic filler. Every note should teach something the learner can reuse.
-   Completion criterion: every sentence has German, Chinese, structure breakdown, and at least one grammar point.
+   Completion criterion: every sentence has German, Chinese, a gloss for every word, structure breakdown, and at least one grammar point.
 
 5. Update the website.
    - Add the new sentences to `index.html` in the same visual structure already used by the site:
      - one `<article class="line">` per sentence
      - German in `<p class="de">`
      - Chinese in `<p class="zh">`
+     - every word in `<ul class="words">`, one `<li>` per word: `<strong>Wort</strong> = 含义`
      - structure and grammar in `<ul class="tips">`, leading with **结构** and **语法** labels
    - Preserve sentence order.
    - Do not add numbering.
    - Keep wording on the page aligned with the corrected transcript you just produced.
-   Completion criterion: the new learning content is present in `index.html` and matches the corrected sentence list, including structure and grammar for every sentence.
+   Completion criterion: the new learning content is present in `index.html` and matches the corrected sentence list, including a gloss for every word plus structure and grammar.
 
 6. Verify the update.
    - Read the edited section back or inspect the diff.
@@ -71,11 +75,19 @@ When the user asks for explanation before updating the site, use this per-senten
 ```markdown
 **German sentence.**
 中文翻译。
+- **词汇**：Wort = 含义；Wort = 含义
 - **结构**：主语 + 谓语 + …
 - **语法**：pattern = explanation
 ```
 
 When the user asks to update the site, make the edit directly and summarize what was added or corrected.
+
+## Word Gloss
+
+- Gloss every spoken word in order. Do not skip function words (`und`, `es`, `zu`, `doch`, `nicht`).
+- Use the form in the sentence (`kaufen`, `ein`, `mir`, `die`), not a rewritten lemma unless the lemma is needed to explain a split verb.
+- Names: `Peppa` = 佩奇（人名）.
+- If two words form one unit in this sentence, still list each word, then mention the unit in **语法**.
 
 ## Grammar Focus
 

@@ -277,6 +277,12 @@ body {
   padding: 2.5rem 0 4rem;
 }
 
+.day + .day {
+  margin-top: 4.5rem;
+  padding-top: 2.75rem;
+  border-top: 2px dashed rgba(240, 97, 138, 0.28);
+}
+
 .day-head {
   text-align: center;
   margin-bottom: 2rem;
@@ -430,6 +436,30 @@ body {
   font-size: 1.02rem;
   color: var(--ink-soft);
   line-height: 1.55;
+}
+
+.words {
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.45rem;
+}
+
+.words li {
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.words strong {
+  color: var(--pink-deep);
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .extra {
