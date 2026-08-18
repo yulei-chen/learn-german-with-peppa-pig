@@ -35,7 +35,7 @@ body {
     radial-gradient(ellipse 80% 50% at 10% 20%, rgba(255, 255, 255, 0.55), transparent 55%),
     radial-gradient(ellipse 60% 40% at 90% 10%, rgba(255, 182, 203, 0.35), transparent 50%),
     linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-bottom) 72%, #d8f0c8 100%);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .sky {
@@ -308,11 +308,25 @@ body {
   line-height: 1.55;
 }
 
+.video-dock {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  margin: 0 0 1.75rem;
+  padding: 0.55rem 0 0.75rem;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 247, 255, 0.96) 0%,
+    rgba(232, 247, 255, 0.92) 72%,
+    rgba(232, 247, 255, 0)
+  );
+}
+
 .video {
   position: relative;
-  width: 100%;
+  width: min(100%, calc(32vh * 16 / 9));
   aspect-ratio: 16 / 9;
-  margin: 0 0 2.25rem;
+  margin: 0 auto;
   border-radius: 1.1rem;
   overflow: hidden;
   box-shadow: 0 10px 0 rgba(61, 43, 31, 0.08);
