@@ -314,17 +314,11 @@ body {
   z-index: 8;
   margin: 0 0 1.75rem;
   padding: 0.55rem 0 0.75rem;
-  background: linear-gradient(
-    180deg,
-    rgba(232, 247, 255, 0.96) 0%,
-    rgba(232, 247, 255, 0.92) 72%,
-    rgba(232, 247, 255, 0)
-  );
 }
 
 .video {
   position: relative;
-  width: min(100%, calc(32vh * 16 / 9));
+  width: 100%;
   aspect-ratio: 16 / 9;
   margin: 0 auto;
   border-radius: 1.1rem;
